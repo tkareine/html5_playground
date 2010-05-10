@@ -30,9 +30,9 @@ var CanvasEffects = {};
                 function createPalette() {
                     function paletteGradient(index) {
                         return [
-                            Math.floor(32  + 128.0 * Math.sin(Math.PI * index / 16.0)),
-                            Math.floor(64  + 128.0 * Math.sin(Math.PI * index / 256.0)),
-                            Math.floor(128 + 128.0 * Math.sin(Math.PI * index / 256.0))
+                            Math.floor( 32.0 + 128.0 * Math.sin(Math.PI * index /  16.0)),
+                            Math.floor( 64.0 + 128.0 * Math.sin(Math.PI * index / 256.0)),
+                            Math.floor(128.0 + 128.0 * Math.sin(Math.PI * index / 256.0))
                         ];
                     }
 
@@ -40,20 +40,20 @@ var CanvasEffects = {};
                     for (var index = 0; index < 256; index += 1) {
                         palette[index] = paletteGradient(index);
                     }
+
                     return palette;
                 }
 
                 var palette = createPalette(),
-                    sineAmplitude = 128.0,
-                    sineWidth = 16.0;
+                    sineBaseWidth = 16.0;
 
                 function plasmaTransform(x, y, shift) {
                     return Math.floor(
-                        sineAmplitude * (
-                            Math.sin((x + shift) / sineWidth) +
-                            Math.sin((y + shift) / sineWidth) +
-                            Math.sin((x + y) / sineWidth / 2.0) +
-                            Math.sin(Math.sqrt(x * x + y * y) / sineWidth * 2)
+                        128.0 * (
+                            Math.sin((x + shift) / sineBaseWidth) +
+                            Math.sin((y + shift) / sineBaseWidth) +
+                            Math.sin((x + y) / sineBaseWidth / 2.0) +
+                            Math.sin(Math.sqrt(x * x + y * y) / sineBaseWidth * 2)
                         ) / 4.0 + shift);
                 }
 
