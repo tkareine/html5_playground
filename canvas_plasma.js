@@ -19,10 +19,10 @@ var CanvasEffects = {};
 
         function drawPixel(pixels, x, y, rgb) {
             var offset = (y * width + x) * 4;
-            pixels[offset]   = rgb[0];
-            pixels[offset+1] = rgb[1];
-            pixels[offset+2] = rgb[2];
-            pixels[offset+3] = 255;
+            pixels[offset]   = rgb[0];  // red
+            pixels[offset+1] = rgb[1];  // green
+            pixels[offset+2] = rgb[2];  // blue
+            pixels[offset+3] = 255;     // alpha
         }
 
         return {
