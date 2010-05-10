@@ -10,10 +10,6 @@ var CanvasEffects = {};
             width = canvas.width(),
             height = canvas.height();
 
-        function clearCanvas() {
-            context.clearRect(0, 0, width, height);
-        }
-
         function drawFrame(drawingFun) {
             var imageData = context.getImageData(0, 0, width, height),
                 pixels = imageData.data;
