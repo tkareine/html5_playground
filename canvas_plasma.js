@@ -7,8 +7,8 @@ var CanvasEffects = {};
         }
 
         var context = canvas[0].getContext('2d'),
-            width = canvas.width(),
-            height = canvas.height();
+            width = canvas[0].width,
+            height = canvas[0].height;
 
         function drawFrame(drawingFun) {
             var imageData = context.getImageData(0, 0, width, height),
