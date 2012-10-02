@@ -8,10 +8,10 @@ var CanvasEffects = {};
         width = canvas[0].width,
         height = canvas[0].height;
 
-    function drawFrame(drawingFun) {
+    function drawFrameWith(routine) {
       var imageData = context.getImageData(0, 0, width, height),
           pixels = imageData.data;
-      drawingFun(pixels);
+      routine(pixels);
       context.putImageData(imageData, 0, 0);
     }
 
@@ -68,11 +68,15 @@ var CanvasEffects = {};
           }
         }
 
-        setInterval(function () {
-          drawFrame(function (pixels) {
-            drawPlasma(pixels);
-          });
-        }, 33);     // ~30 fps if the computer is up to it per frame
+        function drawFrame() { drawFrameWith(drawPlasma); }
+
+        var fps = 33;
+        var timeout = Math.floor(1 / fps * 1000);
+
+        (function animation() {
+          setTimeout(animation, timeout);
+          drawFrame();
+        })();
       }
     };
   };
