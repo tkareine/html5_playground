@@ -2,9 +2,7 @@ var CanvasEffects = {};
 
 (function (CE, $) {
     CE.to = function(canvas) {
-        if (!canvas || !canvas[0] || !canvas[0].getContext) {
-            return;
-        }
+        if (!canvas || !canvas[0] || !canvas[0].getContext) return void(0);
 
         var context = canvas[0].getContext('2d'),
             width = canvas[0].width,
@@ -78,5 +76,5 @@ var CanvasEffects = {};
                 }, 33);     // ~30 fps if the computer is up to it per frame
             }
         };
-    }
+    };
 })(CanvasEffects, jQuery);
