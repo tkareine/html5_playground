@@ -35,6 +35,7 @@ var CanvasEffects = {};
           }
 
           var palette = new Array(256);
+
           for (var index = 0; index < 256; index += 1) {
             palette[index] = paletteGradient(index);
           }
