@@ -70,11 +70,8 @@ var CanvasEffects = {};
 
         function drawFrame() { drawFrameWith(drawPlasma); }
 
-        var fps = 33;
-        var timeout = Math.floor(1 / fps * 1000);
-
         (function animation() {
-          setTimeout(animation, timeout);
+          window.requestAnimationFrame(animation);
           drawFrame();
         })();
       }
