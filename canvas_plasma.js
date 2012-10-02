@@ -28,9 +28,9 @@ var CanvasEffects = {};
         function createPalette() {
           function paletteGradient(index) {
             return [
-              Math.floor( 32.0 + 128.0 * Math.sin(Math.PI * index /  16.0)),
-              Math.floor( 64.0 + 128.0 * Math.sin(Math.PI * index / 256.0)),
-              Math.floor(128.0 + 128.0 * Math.sin(Math.PI * index / 256.0))
+              Math.floor( 32 + 128 * Math.sin(Math.PI * index /  16)),
+              Math.floor( 64 + 128 * Math.sin(Math.PI * index / 256)),
+              Math.floor(128 + 128 * Math.sin(Math.PI * index / 256))
             ];
           }
 
@@ -44,22 +44,22 @@ var CanvasEffects = {};
         }
 
         var palette = createPalette(),
-            sineBaseWidth = 16.0;
+            sineBaseWidth = 16;
 
         function plasmaTransform(x, y, shift) {
           return Math.floor(
-            128.0 * (
+            128 * (
               Math.sin((x + shift) / sineBaseWidth) +
                 Math.sin((y + shift) / sineBaseWidth) +
-                Math.sin((x + y) / sineBaseWidth / 2.0) +
+                Math.sin((x + y) / sineBaseWidth / 2) +
                 Math.sin(Math.sqrt(x * x + y * y) / sineBaseWidth * 2)
-            ) / 4.0 + shift);
+            ) / 4 + shift);
         }
 
         function getContinousValue() { return Date.now(); }
 
         function drawPlasma(pixels) {
-          var shift = Math.floor(getContinousValue() / 100.0);
+          var shift = Math.floor(getContinousValue() / 100);
           for (var x = 0; x < width; x += 1) {
             for (var y = 0; y < height; y += 1) {
               var rgb = palette[(plasmaTransform(x, y, shift)) % 256];
