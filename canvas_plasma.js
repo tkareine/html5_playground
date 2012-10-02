@@ -80,4 +80,4 @@ var CanvasEffects = {};
       }
     };
   };
-})(CanvasEffects, jQuery);
+})(CanvasEffects, window.jQuery);
