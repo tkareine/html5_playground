@@ -56,9 +56,7 @@ var CanvasEffects = {};
             ) / 4.0 + shift);
         }
 
-        function getContinousValue() {
-          return new Date().getTime();
-        }
+        function getContinousValue() { return Date.now(); }
 
         function drawPlasma(pixels) {
           var shift = Math.floor(getContinousValue() / 100.0);
