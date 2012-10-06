@@ -63,11 +63,11 @@ var CanvasEffects = {};
           return Math.abs(plasmaWave(x, y, shift)) % paletteSize;
         }
 
-        function getContinousValue() { return Date.now(); }
+        function getCurrentAnimationShift() { return Math.floor(Date.now() / 100); }
 
         function drawPlasma(pixels) {
           var x, y, rgb;
-          var shift = Math.floor(getContinousValue() / 100);
+          var shift = getCurrentAnimationShift();
 
           for (x = 0; x < width; x += 1) {
             for (y = 0; y < height; y += 1) {
