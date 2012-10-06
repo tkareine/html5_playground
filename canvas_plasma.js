@@ -11,12 +11,14 @@ var CanvasEffects = {};
     function drawFrameWith(routine) {
       var imageData = context.getImageData(0, 0, width, height),
           pixels = imageData.data;
+
       routine(pixels);
       context.putImageData(imageData, 0, 0);
     }
 
     function drawPixel(pixels, x, y, rgb) {
       var offset = (y * width + x) * 4;
+
       pixels[offset]   = rgb[0];  // red
       pixels[offset+1] = rgb[1];  // green
       pixels[offset+2] = rgb[2];  // blue
@@ -34,9 +36,9 @@ var CanvasEffects = {};
             ];
           }
 
-          var palette = new Array(256);
+          var index, palette = new Array(size);
 
-          for (var index = 0; index < 256; index += 1) {
+          for (index = 0; index < size; index += 1) {
             palette[index] = paletteGradient(index);
           }
 
@@ -59,10 +61,12 @@ var CanvasEffects = {};
         function getContinousValue() { return Date.now(); }
 
         function drawPlasma(pixels) {
+          var x, y, rgb;
           var shift = Math.floor(getContinousValue() / 100);
-          for (var x = 0; x < width; x += 1) {
-            for (var y = 0; y < height; y += 1) {
-              var rgb = palette[(plasmaTransform(x, y, shift)) % 256];
+
+          for (x = 0; x < width; x += 1) {
+            for (y = 0; y < height; y += 1) {
+              rgb = palette[(plasmaTransform(x, y, shift)) % 256];
               drawPixel(pixels, x, y, rgb);
             }
           }
